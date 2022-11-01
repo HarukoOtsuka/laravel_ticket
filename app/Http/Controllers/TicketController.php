@@ -106,6 +106,7 @@ class TicketController extends Controller
         $ticket = Ticket::find($id);
         $ticket->update([
             'ticket_name' => $request->ticket_name,
+            'event_date' => $request->event_date,
             'ticket_comment' => $request->ticket_comment,
             'price' => $request->price,
         ]);
