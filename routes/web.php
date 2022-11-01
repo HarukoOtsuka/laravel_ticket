@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//ログインに関するルーティング
+Auth::routes();
+
+//ticketsに関するリソースルーティング
+//TicketControllerの各アクションに紐づける
+Route::resource('tickets', 'TicketController');
+
+//トップページのルーティング
+Route::get('/', 'TicketController@index')->name('top');
+
+//出品チケット一覧に関するルーティング
+Route::get('/users/{user}/exhibitions', 'UserController@exhibitions')->name('users.exhibitions');
