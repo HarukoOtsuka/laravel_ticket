@@ -16,7 +16,10 @@
                 価格：{{ $ticket->price }}円
             </div>
             <div>
-                出品者：{{ $ticket->user->name }}
+                出品者：
+                <a href="{{ route('users.show', $ticket->user->id) }}">
+                    {{ $ticket->user->name }}
+                </a>
             </div>
         </li>    
     </ul>
