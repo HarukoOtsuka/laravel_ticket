@@ -27,3 +27,11 @@ Route::get('/', 'TicketController@index')->name('top');
 
 //出品チケット一覧に関するルーティング
 Route::get('/users/{user}/exhibitions', 'UserController@exhibitions')->name('users.exhibitions');
+
+//フォローに関するルーティング
+Route::resource('follows', 'FollowController')->only([
+    'index', 'store', 'destroy'
+]);
+
+//ユーザーに関するルーティング
+Route::get('/users/{user}', 'UserController@show')->name('users.show');

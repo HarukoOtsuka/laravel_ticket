@@ -8,8 +8,9 @@
         @forelse($tickets as $ticket)
             <li>
                 <div>
+                    商品名：
                     <a href="{{ route('tickets.show', $ticket) }}">
-                        商品名：{{ $ticket->ticket_name }}
+                        {{ $ticket->ticket_name }}
                     </a>
                     (開催日時：{{ date('Y年m月d日 H時i分', strtotime($ticket->event_date)) }})
                 </div>

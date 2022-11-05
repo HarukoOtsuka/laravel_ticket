@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ticket;
 use App\Http\Requests\TicketRequest;
+use App\User;
 
 class TicketController extends Controller
 {
@@ -22,9 +23,13 @@ class TicketController extends Controller
     public function index()
     {
         $tickets = Ticket::where('user_id', '!=', \Auth::user()->id)->latest()->get();
+        $user = \Auth::user();
+        $follow_user_ids = $user->follow_users->pluck('id');
+        $recommended_users = User::where('id', '!=', \Auth::user()->id)->whereNotIn('id', $follow_user_ids)->inRandomOrder()->limit(3)->get();
         return view('tickets.index', [
             'title' => 'チケット一覧',
             'tickets' => $tickets,
+            'recommended_users' => $recommended_users,
         ]);
     }
 
