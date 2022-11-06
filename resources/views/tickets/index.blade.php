@@ -4,6 +4,14 @@
 
 @section('content')
     <h1>{{ $title }}</h1>
+    <div>
+        <form action="{{ route('tickets.index') }}">
+            @csrf
+            @method('get')
+            <input type="text" name="keyword" value="{{ $keyword }}">
+            <input type="submit" value="検索">
+        </form>
+    </div>
     <h2>おすすめユーザー</h2>
     <ul>
         @forelse($recommended_users as $recommended_user)
