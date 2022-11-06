@@ -28,6 +28,7 @@
             <label>
                 価格：
                 <input type="number" name="price">
+                円
             </label>
         </div>
         <input type="submit" value="出品">

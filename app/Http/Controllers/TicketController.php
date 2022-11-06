@@ -20,9 +20,14 @@ class TicketController extends Controller
      * @return \Illuminate\Http\Response
      */
         //チケット一覧
-    public function index()
+    public function index(Request $request)
     {
-        $tickets = Ticket::where('user_id', '!=', \Auth::user()->id)->latest()->get();
+        $keyword = $request->input('keyword');
+        $query = Ticket::query();
+        if(!empty($keyword)){
+            $query->where('ticket_name', 'LIKE', "%{$keyword}%");
+        }
+        $tickets = $query->where('user_id', '!=', \Auth::user()->id)->latest()->get();
         $user = \Auth::user();
         $follow_user_ids = $user->follow_users->pluck('id');
         $recommended_users = User::where('id', '!=', \Auth::user()->id)->whereNotIn('id', $follow_user_ids)->inRandomOrder()->limit(3)->get();
@@ -30,6 +35,7 @@ class TicketController extends Controller
             'title' => 'チケット一覧',
             'tickets' => $tickets,
             'recommended_users' => $recommended_users,
+            'keyword' => $keyword,
         ]);
     }
 
