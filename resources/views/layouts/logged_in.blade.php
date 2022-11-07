@@ -14,13 +14,13 @@
             </a>
         </li>
         <li>
-            <form action="{{ route('tickets.create') }}" method="GET">
+            <form method="GET" action="{{ route('tickets.create') }}">
                 @csrf
                 <input type="submit" value="新規出品">
             </form>
         </li>
         <li>
-            <form action="{{ route('logout') }}" method="POST">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <input type="submit" value="ログアウト">
             </form>

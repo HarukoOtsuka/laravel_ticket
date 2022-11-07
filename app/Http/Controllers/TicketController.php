@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Ticket;
 use App\Http\Requests\TicketRequest;
 use App\User;
+use App\Order;
 
 class TicketController extends Controller
 {
@@ -67,6 +68,7 @@ class TicketController extends Controller
             'event_date' => $request->event_date,
             'ticket_comment' => $request->ticket_comment,
             'price' => $request->price,
+            'stock' => $request->stock,
         ]);
         session()->flash('success', 'チケットを出品しました');
         return redirect()->route('users.exhibitions', ['user'=>\Auth::user()->id]);
@@ -120,6 +122,7 @@ class TicketController extends Controller
             'event_date' => $request->event_date,
             'ticket_comment' => $request->ticket_comment,
             'price' => $request->price,
+            'stock' => $request->stock,
         ]);
         session()->flash('success', 'チケット情報を編集しました');
         return redirect()->route('tickets.show', $id);
@@ -138,5 +141,33 @@ class TicketController extends Controller
         $ticket->delete();
         \Session::flash('success', 'チケット情報を削除しました');
         return redirect()->route('users.exhibitions', ['user'=>\Auth::user()->id]);
+    }
+    
+    public function confirm($id)
+    {
+        $ticket = Ticket::find($id);
+        return view('tickets.confirm', [
+            'title' => '購入確認',
+            'ticket' => $ticket,
+        ]);
+    }
+    
+    //購入確定
+    public function finish(Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        
+        Order::create([
+            'user_id' => \Auth::user()->id,
+            'ticket_id' => $id,
+        ]);
+        
+        $ticket->stock--;
+        $ticket->save();
+        
+        return view('tickets.finish', [
+            'title' => 'ご購入ありがとうございました',
+            'ticket' => $ticket,
+        ]);
     }
 }

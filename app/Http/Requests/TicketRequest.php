@@ -28,6 +28,7 @@ class TicketRequest extends FormRequest
             'ticket_comment' => ['required', 'max:1000'],
             'event_date' => ['required', 'after:today'],
             'price' => ['required', 'integer', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0'],
         ];
     }
 }
