@@ -7,18 +7,20 @@
     <ul>
         <div>
             ユーザー名：{{ $user->name }}
-            @if(Auth::user()->isFollowing($user))
-                <form method="POST" action="{{ route('follows.destroy', $user) }}">
-                    @csrf
-                    @method('delete')
-                    <input type="submit" value="フォロー解除">
-                </form>
-            @else
-                <form method="POST" action="{{ route('follows.store') }}">
-                    @csrf
-                    <input type="hidden" name="follow_id" value="{{ $user->id }}">
-                    <input type="submit" value="フォロー">
-                </form>
+            @if($user->id !== Auth::user()->id)
+                @if(Auth::user()->isFollowing($user))
+                    <form method="POST" action="{{ route('follows.destroy', $user) }}">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="フォロー解除">
+                    </form>
+                @else
+                    <form method="POST" action="{{ route('follows.store') }}">
+                        @csrf
+                        <input type="hidden" name="follow_id" value="{{ $user->id }}">
+                        <input type="submit" value="フォロー">
+                    </form>
+                @endif
             @endif
         </div>
         @forelse($tickets as $ticket)

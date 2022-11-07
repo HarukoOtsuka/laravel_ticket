@@ -22,7 +22,7 @@
         <div>
             <label>
                 説明：
-                <input type="text" name="ticket_comment" value="{{ $ticket->ticket_comment }}">
+                <textarea name="ticket_comment">{{ $ticket->ticket_comment }}</textarea>
             </label>
         </div>
         <div>
@@ -30,6 +30,13 @@
                 価格：
                 <input type="number" name="price" value="{{ $ticket->price }}">
                 円
+            </label>
+        </div>
+        <div>
+            <label>
+                枚数：
+                <input type="number" name="stock" value="{{ $ticket->stock }}">
+                枚
             </label>
         </div>
         <input type="submit" value="出品">
