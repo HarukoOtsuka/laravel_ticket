@@ -1,16 +1,108 @@
-.header_nav {
+.header_nav{
   display: flex;
   list-style: none;
   padding-left: 0;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.header_nav li {
+.header_nav li{
   margin-right: 30px;
 }
+.header_nav a{
+  text-decoration: none;
+}
 /* エラーメッセージ用のスタイル */
-.error {
+.error{
   color: red;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* 成功メッセージ用のスタイル */
-.success {
+.success{
   color: green;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.not_logged_in_title{
+  text-align: center;
+}
+.not_logged_in_main{
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.not_logged_in_btn{
+  margin-top: 10px;
+}
+.btn{
+  color: white;
+  background-color: #2174b5;
+  border-width: 0;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.main_btn{
+  color: white;
+  background-color: #fb6d13;
+  border-width: 0;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.delete_btn{
+  color: white;
+  background-color: #f12718;
+  border-width: 0;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+.btn_flex{
+  display: flex;
+}
+.flex{
+  display: flex;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.left_bar{
+  margin: 15px 0px;
+}
+.center{
+  margin: 15px 0px;
+  flex-grow: 1;
+}
+.center a{
+  text-decoration: none;
+}
+.right_bar{
+  margin: 15px;
+}
+.right_bar h2{
+  margin: 0px;
+}
+.right_bar a{
+  text-decoration: none;
+}
+.logged_in_title{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: solid 1px black;
+}
+.main_contents{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main_contents a{
+  text-decoration: none;
+}
+.pagination{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }

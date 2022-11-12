@@ -11,7 +11,7 @@ class UserController extends Controller
     //出品商品一覧
     public function exhibitions($id)
     {
-        $tickets = \Auth::user()->tickets()->latest()->get();
+        $tickets = \Auth::user()->tickets()->latest()->paginate(5);
         return view('users.exhibitions', [
             'title' => '出品チケット一覧',
             'tickets' => $tickets,
@@ -22,7 +22,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $tickets = $user->tickets()->latest()->get();
+        $tickets = $user->tickets()->latest()->paginate(5);
         return view('users.show', [
             'title' => 'ユーザー詳細',
             'user' => $user,
