@@ -3,6 +3,28 @@
 @section('title', $title)
 
 @section('content')
+    <div class="carousel">
+        <div class="slick_content">
+            <img src="/photos/image1.JPG" alt="ハロウィンライブ">
+            <div class="slick_text">test1</div>
+        </div>
+        <div class="slick_content">
+            <img src="/photos/image2.JPG" alt="軽音ライブ1">
+            <div class="slick_text">test2</div>
+        </div>
+        <div class="slick_content">
+            <img src="/photos/image3.JPG" alt="オリンピック空">
+            <div class="slick_text">test3</div>
+        </div>
+        <div class="slick_content">
+            <img src="/photos/image4.JPG" alt="軽音ライブ2">
+            <div class="slick_text">test4</div>
+        </div>
+        <div class="slick_content">
+            <img src="/photos/image5.JPG" alt="ネモフィラ">
+            <div class="slick_text">test5</div>
+        </div>
+    </div>
     <h1 class="logged_in_title">{{ $title }}</h1>
         <div class="flex">
             <div class="left_bar">
@@ -51,4 +73,11 @@
         <div class="pagination">
             {{ $tickets->appends(request()->except('page'))->links() }}
         </div>
+        <script type="text/javascript">
+            $('.carousel').slick({
+                dots:true,
+                autoplay:true,
+                autoplaySpeed:2000
+            });
+        </script>
 @endsection
