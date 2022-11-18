@@ -24,7 +24,7 @@
                             @csrf
                             <input type="submit" value="編集" class="main_btn">
                         </form>
-                        <form method="POST" action="{{ route('tickets.destroy', $ticket) }}">
+                        <form method="POST" action="{{ route('tickets.destroy', $ticket) }}" id="confirm_submit">
                             @csrf
                             @method('delete')
                             <input type="submit" value="削除" class="delete_btn">
@@ -38,4 +38,9 @@
         <div class="pagination">
             {{ $tickets->links() }}
         </div>
+        <script>
+            $('#confirm_submit').on('submit', ()=>{
+                return confirm('削除しますか？');
+            });
+        </script>
 @endsection
